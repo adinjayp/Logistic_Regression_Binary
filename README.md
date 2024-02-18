@@ -1,67 +1,54 @@
-# Logistic Regression with Gradient Descent in Python
+# Logistic Regression Implementation
 
-This repository contains an implementation of logistic regression with gradient descent in Python. The code includes data preprocessing, model training, prediction, and evaluation.
+This repository contains a Python implementation of logistic regression from scratch. Logistic regression is a fundamental machine learning algorithm used for binary classification tasks.
 
-## Table of Contents
-- [Installation](#installation)
-- [Usage](#usage)
-  - [Classes](#classes)
-  - [Examples](#examples)
-
-## Installation
-To use the code, you need to have Python and the following libraries installed:
-
+## Dependencies
 - numpy
 - pandas
 - matplotlib
 - tqdm
-- sklearn
+- scikit-learn
 
-You can install them using pip:
+You can install the dependencies using pip:
 
 ```bash
 pip install numpy pandas matplotlib tqdm scikit-learn
 Usage
-To use the logistic regression model, simply create an instance of the LogisticRegression class and call the fit() method.
+Clone the repository:
+bash
+Copy code
+git clone https://github.com/your_username/your_repo.git
+Navigate to the repository:
+bash
+Copy code
+cd your_repo
+Run the logistic_regression.py script:
+bash
+Copy code
+python logistic_regression.py
+Code Overview
+The LogisticRegression class is implemented in logistic_regression.py. Below is a brief overview of its functionalities:
 
+__init__: Initializes the logistic regression model with hyperparameters such as learning rate, tolerance, regularization, lambda parameter, and maximum iterations.
+datasetReader: Loads the Breast Cancer dataset and splits it into training and testing sets.
+normalize_data: Normalizes the data by subtracting the mean and dividing by the standard deviation.
+addX0: Adds a column of ones to the feature matrix for the bias term.
+sigmoid: Computes the sigmoid function.
+decision_boundary: Plots the decision boundary for two-dimensional datasets.
+costFunction: Computes the logistic regression cost function.
+gradient: Computes the gradient of the cost function.
+gradientDescent: Performs gradient descent optimization to minimize the cost function.
+plotCost: Plots the cost function over iterations.
+predict: Predicts the class labels for input data.
+evaluate: Evaluates the model's performance using accuracy, precision, and recall metrics.
+fit: Fits the logistic regression model to the training data, evaluates its performance on the test data, and plots the decision boundary.
+Example
 python
 Copy code
+from logistic_regression import LogisticRegression
+
+# Initialize the model
 model = LogisticRegression(learningRate=0.1, tolerance=1e-5, regularization=True, lambda_param=0.01)
+
+# Fit the model
 model.fit()
-Classes
-LogisticRegression: The LogisticRegression class implements the logistic regression model with gradient descent.
-
-Parameters:
-
-learningRate: float, optional (default=0.1) - The learning rate for gradient descent.
-tolerance: float, optional (default=1e-5) - The tolerance for the convergence of gradient descent.
-regularization: bool, optional (default=False) - Whether to use regularization or not.
-lambda_param: float, optional (default=0.1) - The regularization parameter (Lambda).
-maxIteration: int, optional (default=50000) - The maximum number of iterations for gradient descent.
-Methods:
-
-datasetReader(): returns the breast cancer dataset.
-normalize_data(X): normalizes the input data.
-normalize_train_test_data(X_train, X_test): normalizes the training and test data.
-addX0(X): adds a column of ones to the input data.
-sigmoid(z): calculates the sigmoid function.
-decision_boundary(X, w): plots the decision boundary.
-costFunction(X, y): calculates the cost function.
-gradient(X, y): calculates the gradient.
-gradientDescent(X, y): performs gradient descent.
-plotCost(error_sequences): plots the cost function.
-predict(X): predicts the classes.
-evaluate(y, y_hat): evaluates the model performance.
-fit(): trains the model.
-Examples
-Here are some examples of using the LogisticRegression class:
-
-python
-Copy code
-# Example 1: Logistic Regression with Regularization
-model = LogisticRegression(learningRate=0.1, tolerance=1e-5, regularization=True, lambda_param=0.01)
-model.fit()
-
-# Example 2: Logistic Regression without Regularization
-model2 = LogisticRegression(learningRate=0.1, tolerance=1e-5, regularization=False, lambda_param=0.1)
-model2.fit()
